@@ -1,0 +1,22 @@
+﻿@model TaskApp.Models.Task
+
+<h2>Task Sil</h2>
+
+<div>
+    <h3>Oge silinecektir. Emin misiniz?</h3>
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="Id" />
+        <div class="form-group">
+            <label asp-for="Description"></label>
+            <p>@Model.Description</p>
+        </div>
+        <div class="form-group">
+            <label asp-for="Date"></label>
+            <p>@Model.Date</p>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Sil" class="btn btn-danger" />
+            <a asp-action="Index">Listeye don.</a>
+        </div>
+    </form>
+</div>

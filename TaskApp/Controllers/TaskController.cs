@@ -158,6 +158,28 @@ public class TaskController : Controller
         return RedirectToAction(nameof(Index));
     }
 
+    // GET: Tasks/Details/5
+    public async Task<IActionResult> Details(int? id)
+    {
+        if (id == null)
+        {
+            return NotFound();
+        }
+
+        var taskModel = await _context.Tasks
+            .Include(t => t.User)
+            .FirstOrDefaultAsync(m => m.Id == id);
+
+        if (taskModel == null)
+        {
+            return NotFound();
+        }
+
+        return View(taskModel);
+    }
+
+
+
     private bool TaskExists(int id)
     {
         return _context.Tasks.Any(e => e.Id == id);

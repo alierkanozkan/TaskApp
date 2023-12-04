@@ -2,18 +2,23 @@
 
 <h2>Task List</h2>
 
-<p>
-    <a asp-action="Create" class="btn btn-success">Yeni</a>
-</p>
-
-<form asp-controller="Task" asp-action="Index" method="get">
-    <div class="form-group">
-        <label asp-for="FilterDescription">Description:</label>
-        <input type="text" class="form-control" asp-for="FilterDescription" />
+<div class="row mb-3">
+    <div class="col-md-6">
+        <p>
+            <a asp-action="Create" class="btn btn-success">New Task</a>
+        </p>
     </div>
-    <button type="submit" class="btn btn-primary">Filter</button>
-    <a asp-action="Index" class="btn btn-secondary">Clear Filter</a>
-</form>
+    <div class="col-md-6">
+        <form asp-controller="Task" asp-action="Index" method="get" class="form-inline">
+            <div class="form-group mr-2">
+                <label asp-for="FilterDescription" class="mr-2">Description:</label>
+                <input type="text" class="form-control" asp-for="FilterDescription" />
+            </div>
+            <button type="submit" class="btn btn-primary">Filter</button>
+            <a asp-action="Index" class="btn btn-secondary ml-2">Clear Filter</a>
+        </form>
+    </div>
+</div>
 
 <table class="table">
     <thead>
@@ -32,9 +37,9 @@
                 <td>@task.Description</td>
                 <td>@task.Date.ToString("MM/dd/yyyy")</td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@task.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@task.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@task.Id">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@task.Id" class="btn btn-sm btn-primary">Edit</a>
+                    <a asp-action="Details" asp-route-id="@task.Id" class="btn btn-sm btn-info">Details</a>
+                    <a asp-action="Delete" asp-route-id="@task.Id" class="btn btn-sm btn-danger">Delete</a>
                 </td>
             </tr>
         }

@@ -31,7 +31,7 @@ public class TaskController : Controller
             return NotFound();
         }
 
-        IQueryable<TaskApp.Models.Task> tasksQuery = _context.Tasks.Where(t => t.UserId == user.Id);
+        IQueryable<TaskApp.Models.Task> tasksQuery = _context.Tasks.Where(t => t.UserId == user.Id).OrderBy(t => t.Date);
 
         if (!string.IsNullOrWhiteSpace(filterDescription))
         {
